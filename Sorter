@@ -1,0 +1,48 @@
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class Sorter {
+    public static void main(String[] args) throws Exception {
+    
+        System.out.println("Введите целые числа, введите Exit  для окончания ввода");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        
+         ArrayList <Integer> list = new ArrayList<>();
+        
+        while (true) {
+            String input = reader.readLine();
+            if (input.equalsIgnoreCase("exit")){
+                break;}
+            else {
+               list.add(Integer.parseInt(input));
+            }
+        }
+        System.out.println("Ваша последовательность чисел :");
+        for (int a : list) {
+            System.out.print(a+" ");
+        }                                         
+       int [] array = new int[list.size()];
+        for (int i = 0; i <list.size();i++)  {
+            array[i] = list.get(i);
+        }
+
+
+        int temp;
+        for (int i =0; i<array.length;i++) {
+            for (int j = i+1; j<array.length;j++) {
+                if (array[i]>array[j]) {
+                    temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+        System.out.println();
+        System.out.println("Ниже выведена Ваша отсортированная по возрастанию последовательность ");
+        for (int a : array) {
+            System.out.print(a+" ");
+        }
+    }
+}
