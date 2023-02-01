@@ -1,48 +1,54 @@
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class Sorter {
+public class BubbleSorter {
     public static void main(String[] args) throws Exception {
-    
+
         System.out.println("Введите целые числа, введите Exit  для окончания ввода");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        
-         ArrayList <Integer> list = new ArrayList<>();
-        
+
+        ArrayList <Integer> list = new ArrayList<>();
+
         while (true) {
             String input = reader.readLine();
             if (input.equalsIgnoreCase("exit")){
                 break;}
             else {
-               list.add(Integer.parseInt(input));
+                list.add(Integer.parseInt(input));
             }
         }
         System.out.println("Ваша последовательность чисел :");
         for (int a : list) {
             System.out.print(a+" ");
-        }                                         
-       int [] array = new int[list.size()];
+        }
+        int [] array = new int[list.size()];
         for (int i = 0; i <list.size();i++)  {
             array[i] = list.get(i);
         }
 
-
         int temp;
-        for (int i =0; i<array.length;i++) {
-            for (int j = i+1; j<array.length;j++) {
-                if (array[i]>array[j]) {
+        boolean sortStat = false;
+        while (!sortStat) {
+            sortStat = true;
+            for (int i = 0; i < array.length - 1; i++) {
+                if (array[i] > array[i + 1]) {
+                    sortStat = false;
                     temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
+                    array[i] = array[i + 1];
+                    array[i + 1] = temp;
                 }
             }
+
         }
-        System.out.println();
-        System.out.println("Ниже выведена Ваша отсортированная по возрастанию последовательность ");
-        for (int a : array) {
-            System.out.print(a+" ");
+            System.out.println();
+            System.out.println("Ниже выведена Ваша отсортированная по возрастанию последовательность ");
+            for (int a : array) {
+                System.out.print(a+" ");
+            }
         }
     }
-}
+
+
+
+
